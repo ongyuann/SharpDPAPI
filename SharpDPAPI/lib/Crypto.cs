@@ -273,7 +273,7 @@ namespace SharpDPAPI
             aesCryptoProvider.Mode = CipherMode.CBC;
             aesCryptoProvider.BlockSize = 128;
             aesCryptoProvider.Padding = PaddingMode.Zeros;
-            var transform = aesCryptoProvider.CreateDecryptor();
+            var transform = aesCryptoProvider.CreateDecryptor(aesCryptoProvider.Key, aesCryptoProvider.IV);
 
             var chunks = Decimal.ToInt32(Math.Ceiling((decimal)data.Length / (decimal)16));
             var plaintext = new byte[chunks * 16];
